@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-# 🚀 About Me
+# About Me
 
 Hi! I'm Qin Xuqiang. 
 - 💻 I am enthusiastic about artificial intelligence and mathematics.
@@ -17,8 +17,3 @@ Hi! I'm Qin Xuqiang.
 - [Huggingface](https://huggingface.co/qinxuqiang1990)
 - [Google Scholar](https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en)
   
-
-
----
-
-_Thanks for visiting my profile!_
