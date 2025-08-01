@@ -1,5 +1,6 @@
 title: "Qin Xuqiang"
 description: "Personal website of Qin Xuqiang"
 baseurl: ""
-url: ""
-theme: beautiful Jekyll
+url: "qinxuqiang.github.io"
+
+remote_theme: daattali/beautiful-jekyll
