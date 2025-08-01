@@ -2,5 +2,4 @@ title: "Qin Xuqiang"
 description: "Personal website of Qin Xuqiang"
 baseurl: ""
 url: "qinxuqiang.github.io"
-
-remote_theme: daattali/beautiful-jekyll
+theme: minima
