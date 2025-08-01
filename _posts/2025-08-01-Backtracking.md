@@ -6,7 +6,11 @@ date: 2025-08-01
 
 # Backtracking
 
+## Intro
+
 Backtracking is a powerful programming technique. The main point is to systematically explore the solution spaces by making choices, and undo them in case they do not lead to valid solutions. 
+
+## Coding Template:
 
 Here is a code template for a typical backtrack problem:
 
@@ -34,3 +38,8 @@ if __name__==__main__
     backtrack(initial_state_,all_choices)
     return solution
 ```
+
+## Examples:
+
+### The N-Queens problem
+[LeetCode](https://leetcode.com/submissions/detail/1719643129/)
