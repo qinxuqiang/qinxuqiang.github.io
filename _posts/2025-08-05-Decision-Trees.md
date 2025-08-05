@@ -1,3 +1,9 @@
+---
+layout: default
+title: "[ML Basic] Decision Trees"
+date: 2025-08-05
+---
+
 
             ┌────────────────────┐
             │ First class?       │
