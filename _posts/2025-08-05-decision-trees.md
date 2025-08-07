@@ -55,7 +55,7 @@ Cons:
 ## Popular Ensemble of decision trees
 As we mentioned above, a single decision tree is prone to overfitting. To remedy this, we can use an ensemble of decision trees. Below are two popular approaches:
 
-### Random Forests :evergreen_tree::evergreen_tree::evergreen_tree::evergreen_tree:
+### Random Forests 
 
 A *random forest* is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average). 
 
