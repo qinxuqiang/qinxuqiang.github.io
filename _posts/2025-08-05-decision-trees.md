@@ -57,10 +57,10 @@ As we mentioned above, a single decision tree is prone to overfitting. To remedy
 
 ### Random Forests
 
-A * random forest * is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average). 
+A *random forest* is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average). 
 
 Key points: 
-- The * randomness * lies in the data sampling and feature selection.
+- The *randomness* lies in the data sampling and feature selection.
 - Training are parallel: trees are trained independently. Resulting in faster training
 - Good baseline, robust to noise.
 
