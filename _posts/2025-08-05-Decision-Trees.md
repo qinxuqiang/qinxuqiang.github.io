@@ -53,10 +53,62 @@ Cons:
 
 
 ## Popular Ensemble of decision trees
-
+As we mentioned above, a single decision tree is prone to overfitting. To remedy this, we can use an ensemble of decision trees. Below are two popular approaches:
 
 ### Random Forests
 
+A * random forest * is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average). 
+
+Key points: 
+- The * randomness * lies in the data sampling and feature selection.
+- Training are parallel: trees are trained independently. Resulting in faster training
+- Good baseline, robust to noise.
+
 ### Gradient Boosting
+
+Gradient boostings starts with a weak model, usually a small DT, measure its errors, then train a new model to predict the error and adding the new model to the ensemble. This sequential process is then repeated manytimes wehre each model learn from the mistakes of the previous ones.
+
+```
+Step 1: Start with an initial prediction (e.g., average)
+    ┌──────────────┐
+    │   Model 0    │
+    │  (baseline)  │
+    └──────────────┘
+           │
+           ▼
+     Residuals/Error
+
+Step 2: Fit a new tree to residuals
+    ┌──────────────┐
+    │   Model 1    │
+    │  (residuals) │
+    └──────────────┘
+           │
+           ▼
+     Updated Predictions
+
+Step 3: Fit another tree to new residuals
+    ┌──────────────┐
+    │   Model 2    │
+    │  (new error) │
+    └──────────────┘
+           │
+           ▼
+     More Accurate Predictions
+
+Repeat this process for N trees:
+    Final Prediction = 
+    Model₀ + η·Model₁ + η·Model₂ + ... + η·Modelₙ
+
+Where η = learning rate (a small number, like 0.1)
+```
+
+
+Key points:
+- Newer model boosts the gradeint of the loss function, essential numerical optimization.
+- The sequential nature of the process. Resulting in slower training.
+- Produces competitive results. Commonly the go-to models on Kaggle (XGBoost, LightGBM, CatBoost)
+
+
 
 
