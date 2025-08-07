@@ -39,7 +39,7 @@ Structurely, a decision tree is a flowchart-like structure:
 - Each branch represents the outcome of the decision (e.g., "Yes" or "No")
 - Each leaf node represents a final prediction (e.g., "Survived" or "Dead")
 
-The ** learning ** happens at each node where the machine choses which feature and partition of the feature to use. 
+The **learning** happens at each node where the machine choses which feature and partition of the feature to use. 
 
 Pros of DT:
 - Easy to understand as it mimics human decision making.
