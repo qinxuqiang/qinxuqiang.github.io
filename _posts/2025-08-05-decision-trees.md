@@ -4,7 +4,7 @@ title: "[ML Basic] Decision Trees"
 date: 2025-08-05
 ---
 
-# Decision Trees (DT)
+# Decision Trees (DT) :evergreen_tree:
 This post begins a series where I write about fundamentals of machine learning in my own understanding. The main purpose of this series is to help myself, but hopefully someone else can also get something out of it.
 
 ## Basics
@@ -55,7 +55,7 @@ Cons:
 ## Popular Ensemble of decision trees
 As we mentioned above, a single decision tree is prone to overfitting. To remedy this, we can use an ensemble of decision trees. Below are two popular approaches:
 
-### Random Forests
+### Random Forests :evergreen_tree::evergreen_tree::evergreen_tree::evergreen_tree:
 
 A *random forest* is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average). 
 
