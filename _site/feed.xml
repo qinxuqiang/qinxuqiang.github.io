@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-07T11:40:36-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Qin Xuqiang 秦绪强</title><subtitle>Personal website of Qin Xuqiang - AI researcher and mathematician exploring machine learning, NLP, and mathematical foundations of artificial intelligence</subtitle><author><name>Qin Xuqiang</name><email>russellqin@gmail.com</email></author><entry><title type="html">Policy Optimization in Reinforcement Learning: PPO and GRPO</title><link href="http://localhost:4000/posts/2025/09/RL/" rel="alternate" type="text/html" title="Policy Optimization in Reinforcement Learning: PPO and GRPO" /><published>2025-09-23T00:00:00-04:00</published><updated>2025-09-23T00:00:00-04:00</updated><id>http://localhost:4000/posts/2025/09/RL</id><content type="html" xml:base="http://localhost:4000/posts/2025/09/RL/"><![CDATA[<h1 id="policy-optimazation-ppo-and-grpo">Policy Optimazation: PPO and GRPO</h1>
+
+<p>The recent pulication of DeepSeek R1 paper on Nature showed reinforcememnt learning (RL) has become one of the center piece in LLM developmen.
+In this post we discuss some of the more prominent algorithms in RL</p>
+
+<h2 id="proximal-policy-optimizaiton-ppo">Proximal Policy Optimizaiton (PPO)</h2>
+
+<p>One of the most well-studied RL algorithm.</p>
+
+<h2 id="group-relative-policy-optimization-grpo">Group Relative Policy Optimization (GRPO)</h2>
+
+<p>First introduced in DeepSeek Math paper. Instead of training a critic network, it samples multiple outputs (the group) and compute 
+the group relative advantage for each output and perform gradient update, essentially mimicking a ‘sampel and eliminate’ process.</p>]]></content><author><name>Qin Xuqiang</name></author><category term="reinforcement-learning" /><category term="machine-learning" /><category term="LLMs" /><category term="deep-learning" /><summary type="html"><![CDATA[Exploring policy optimization algorithms in reinforcement learning, including PPO and GRPO, with insights from recent advances in LLM development.]]></summary></entry><entry><title type="html">Decision Trees: From Basics to Ensemble Methods</title><link href="http://localhost:4000/posts/2025/08/decision-trees/" rel="alternate" type="text/html" title="Decision Trees: From Basics to Ensemble Methods" /><published>2025-08-05T00:00:00-04:00</published><updated>2025-08-05T00:00:00-04:00</updated><id>http://localhost:4000/posts/2025/08/decision-trees</id><content type="html" xml:base="http://localhost:4000/posts/2025/08/decision-trees/"><![CDATA[<h1 id="decision-trees-dt-evergreen_tree">Decision Trees (DT) :evergreen_tree:</h1>
+<p>This post begins a series where I write about fundamentals of machine learning in my own understanding. The main purpose of this series is to help myself, but hopefully someone else can also get something out of it.</p>
+
+<h2 id="basics">Basics</h2>
+<p>A decision tree is a supervised leanring algorithm. It can be used both for classification and regression. As the name suggests, * it uses a (usually binary) tree structure, where at each node a decision is make, usually regarding some features of the dataset. *</p>
+
+<p>Take the titanic problem for example, where we are supposed to predict whether a passenger will survive (label) based on their information (features). Below is a simple decision tree:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                ┌────────────────────┐
+                │ First class?       │
+                └────────────────────┘
+                    │         │
+                Yes │         │ No
+                    ▼         ▼
+         ┌────────────────────┐   ┌───────────┐
+         │ Age &lt; 30?          │   │ Dead      │
+         └────────────────────┘   └───────────┘
+              │        │
+          Yes │        │ No
+              ▼        ▼
+         ┌────────┐ ┌────────┐
+         │Survived│ │  Dead  │
+         └────────┘ └────────┘
+</code></pre></div></div>
+
+<p>We can see that both numerical (age) and categorical (passenger class) features are used in the tree.</p>
+
+<p>Structurely, a decision tree is a flowchart-like structure:</p>
+
+<ul>
+  <li>Each internal node represents a decision based on a feature (e.g., “First class?”)</li>
+  <li>Each branch represents the outcome of the decision (e.g., “Yes” or “No”)</li>
+  <li>Each leaf node represents a final prediction (e.g., “Survived” or “Dead”)</li>
+</ul>
+
+<p>The <strong>learning</strong> happens at each node where the machine choses which feature and partition of the feature to use.</p>
+
+<p>Pros of DT:</p>
+<ul>
+  <li>Easy to understand as it mimics human decision making.</li>
+  <li>Requires little data processing</li>
+  <li>Handles both numerical and categorical features</li>
+</ul>
+
+<p>Cons:</p>
+<ul>
+  <li>Prone to overfitting</li>
+  <li>Unstable</li>
+</ul>
+
+<h2 id="popular-ensemble-of-decision-trees">Popular Ensemble of decision trees</h2>
+<p>As we mentioned above, a single decision tree is prone to overfitting. To remedy this, we can use an ensemble of decision trees. Below are two popular approaches:</p>
+
+<h3 id="random-forests">Random Forests</h3>
+
+<p>A <em>random forest</em> is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average).</p>
+
+<p>Key points:</p>
+<ul>
+  <li>The <em>randomness</em> lies in the data sampling and feature selection.</li>
+  <li>Training are parallel: trees are trained independently. Resulting in faster training</li>
+  <li>Good baseline, robust to noise.</li>
+</ul>
+
+<h3 id="gradient-boosting">Gradient Boosting</h3>
+
+<p>Gradient boostings starts with a weak model, usually a small DT, measure its errors, then train a new model to predict the error and adding the new model to the ensemble. This sequential process is then repeated manytimes wehre each model learn from the mistakes of the previous ones.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Step 1: Start with an initial prediction (e.g., average)
+    ┌──────────────┐
+    │   Model 0    │
+    │  (baseline)  │
+    └──────────────┘
+           │
+           ▼
+     Residuals/Error
+
+Step 2: Fit a new tree to residuals
+    ┌──────────────┐
+    │   Model 1    │
+    │  (residuals) │
+    └──────────────┘
+           │
+           ▼
+     Updated Predictions
+
+Step 3: Fit another tree to new residuals
+    ┌──────────────┐
+    │   Model 2    │
+    │  (new error) │
+    └──────────────┘
+           │
+           ▼
+     More Accurate Predictions
+
+Repeat this process for N trees:
+    Final Prediction = 
+    Model₀ + η·Model₁ + η·Model₂ + ... + η·Modelₙ
+
+Where η = learning rate (a small number, like 0.1)
+</code></pre></div></div>
+
+<p>Key points:</p>
+<ul>
+  <li>Newer model boosts the gradeint of the loss function, essential numerical optimization.</li>
+  <li>The sequential nature of the process. Resulting in slower training.</li>
+  <li>Produces competitive results. Commonly the go-to models on Kaggle (XGBoost, LightGBM, CatBoost)</li>
+</ul>]]></content><author><name>Qin Xuqiang</name></author><category term="machine-learning" /><category term="decision-trees" /><category term="algorithms" /><category term="tutorial" /><summary type="html"><![CDATA[A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.]]></summary></entry><entry><title type="html">Backtracking Algorithms: A Comprehensive Guide</title><link href="http://localhost:4000/posts/2025/08/Backtracking/" rel="alternate" type="text/html" title="Backtracking Algorithms: A Comprehensive Guide" /><published>2025-08-01T00:00:00-04:00</published><updated>2025-08-01T00:00:00-04:00</updated><id>http://localhost:4000/posts/2025/08/Backtracking</id><content type="html" xml:base="http://localhost:4000/posts/2025/08/Backtracking/"><![CDATA[<h1 id="backtracking">Backtracking</h1>
+
+<h2 id="intro">Intro</h2>
+
+<p>Backtracking is a powerful programming technique. The main point is to systematically explore the solution spaces by making choices, and undo them in case they do not lead to valid solutions.</p>
+
+<h2 id="coding-template">Coding Template:</h2>
+
+<p>Here is a code template for a typical backtrack problem:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">backtrack</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">remaining_choices</span><span class="p">):</span>
+    <span class="c1"># Base case: found a complete solution
+</span>    <span class="k">if</span> <span class="nf">is_complete</span><span class="p">(</span><span class="n">current_state</span><span class="p">):</span>
+        <span class="nf">process_solution</span><span class="p">(</span><span class="n">current_state</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Try each possible choice
+</span>    <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="nf">get_valid_choices</span><span class="p">(</span><span class="n">remaining_choices</span><span class="p">):</span>
+        <span class="c1"># Make the choice
+</span>        <span class="nf">make_choice</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">choice</span><span class="p">)</span>
+        
+        <span class="c1"># Recurse
+</span>        <span class="nf">backtrack</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">updated_remaining_choices</span><span class="p">)</span>
+        
+        <span class="c1"># Undo the choice (backtrack)
+</span>        <span class="nf">undo_choice</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">choice</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="n">__main__</span>
+    <span class="nf">setup_solution_collection</span><span class="p">()</span>
+    <span class="nf">backtrack</span><span class="p">(</span><span class="n">initial_state_</span><span class="p">,</span><span class="n">all_choices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">solution</span>
+</code></pre></div></div>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="the-n-queens-problem">The N-Queens problem</h3>
+<p><a href="https://leetcode.com/submissions/detail/1719643129/">LeetCode</a></p>]]></content><author><name>Qin Xuqiang</name></author><category term="algorithms" /><category term="coding" /><category term="computer-science" /><summary type="html"><![CDATA[Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems.]]></summary></entry><entry><title type="html">Welcome to My Blog</title><link href="http://localhost:4000/posts/2025/07/welcome/" rel="alternate" type="text/html" title="Welcome to My Blog" /><published>2025-07-30T00:00:00-04:00</published><updated>2025-07-30T00:00:00-04:00</updated><id>http://localhost:4000/posts/2025/07/welcome</id><content type="html" xml:base="http://localhost:4000/posts/2025/07/welcome/"><![CDATA[<p>Welcome to my newly redesigned personal website! This is an exciting milestone as I launch this platform to share my thoughts, research, and projects with the broader community.</p>
+
+<h2 id="what-to-expect">What to Expect</h2>
+
+<p>This blog will be a space where I explore topics at the intersection of:</p>
+
+<ul>
+  <li><strong>Artificial Intelligence &amp; Machine Learning</strong> - Latest techniques, research insights, and practical applications</li>
+  <li><strong>Natural Language Processing</strong> - Deep dives into language models and text understanding</li>
+  <li><strong>Mathematics</strong> - Theoretical foundations and their connections to AI</li>
+  <li><strong>Research &amp; Projects</strong> - Updates on my work and explorations</li>
+</ul>
+
+<h2 id="why-this-blog">Why This Blog?</h2>
+
+<p>I believe in open science and knowledge sharing. Through this blog, I hope to:</p>
+
+<ol>
+  <li>Document my learning journey and research insights</li>
+  <li>Share practical techniques and code examples</li>
+  <li>Connect with other researchers and practitioners</li>
+  <li>Contribute to the broader AI and mathematics community</li>
+</ol>
+
+<h2 id="stay-connected">Stay Connected</h2>
+
+<p>I’ll be posting regularly about topics I’m passionate about. Subscribe to the <a href="/feed.xml">RSS feed</a> to stay updated, or connect with me on <a href="https://github.com/qinxuqiang">GitHub</a> and <a href="https://huggingface.co/qinxuqiang1990">Hugging Face</a>.</p>
+
+<p>Looking forward to sharing this journey with you!</p>]]></content><author><name>Qin Xuqiang</name></author><category term="meta" /><category term="announcement" /><summary type="html"><![CDATA[Introducing my new personal website and blog where I'll share insights on AI, machine learning, and mathematics.]]></summary></entry></feed>

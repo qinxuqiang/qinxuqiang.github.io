@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Decision Trees: From Basics to Ensemble Methods | Qin Xuqiang 秦绪强</title>
+  
+  <meta name="description" content="A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.">
+  <meta name="author" content="Qin Xuqiang">
+  <meta name="keywords" content="machine-learning, decision-trees, algorithms, tutorial">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:4000/posts/2025/08/decision-trees/">
+  <meta property="og:title" content="Decision Trees: From Basics to Ensemble Methods">
+  <meta property="og:description" content="A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.">
+  <meta property="og:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2025/08/decision-trees/">
+  <meta name="twitter:title" content="Decision Trees: From Basics to Ensemble Methods">
+  <meta name="twitter:description" content="A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.">
+  <meta name="twitter:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://localhost:4000/posts/2025/08/decision-trees/">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Qin Xuqiang 秦绪强" href="http://localhost:4000/feed.xml">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/style.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  
+</head>
+
+
+
+
+<body>
+  <header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="site-title">
+        <a href="/">Qin Xuqiang 秦绪强</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          
+          <li>
+            <a href="/" >
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/about/" >
+              About
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/" >
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects/" >
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/publications/" >
+              Publications
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      
+      <div class="social-links">
+        
+        <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        
+        <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+          <i class="fas fa-robot"></i>
+        </a>
+        
+        <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        
+        <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+  
+  <main>
+    <article class="post">
+  <div class="container-narrow">
+    <header class="post-header">
+      <h1 class="post-title">Decision Trees: From Basics to Ensemble Methods</h1>
+      
+      <div class="post-meta">
+        <time datetime="2025-08-05T00:00:00-04:00">
+          August 05, 2025
+        </time>
+        
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 10 min read
+        </span>
+        
+        
+        
+        <span>by Qin Xuqiang</span>
+        
+      </div>
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">decision-trees</span>
+        
+        <span class="tag">algorithms</span>
+        
+        <span class="tag">tutorial</span>
+        
+      </div>
+      
+    </header>
+    
+    <div class="post-content">
+      <h1 id="decision-trees-dt-evergreen_tree">Decision Trees (DT) :evergreen_tree:</h1>
+<p>This post begins a series where I write about fundamentals of machine learning in my own understanding. The main purpose of this series is to help myself, but hopefully someone else can also get something out of it.</p>
+
+<h2 id="basics">Basics</h2>
+<p>A decision tree is a supervised leanring algorithm. It can be used both for classification and regression. As the name suggests, * it uses a (usually binary) tree structure, where at each node a decision is make, usually regarding some features of the dataset. *</p>
+
+<p>Take the titanic problem for example, where we are supposed to predict whether a passenger will survive (label) based on their information (features). Below is a simple decision tree:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                ┌────────────────────┐
+                │ First class?       │
+                └────────────────────┘
+                    │         │
+                Yes │         │ No
+                    ▼         ▼
+         ┌────────────────────┐   ┌───────────┐
+         │ Age &lt; 30?          │   │ Dead      │
+         └────────────────────┘   └───────────┘
+              │        │
+          Yes │        │ No
+              ▼        ▼
+         ┌────────┐ ┌────────┐
+         │Survived│ │  Dead  │
+         └────────┘ └────────┘
+</code></pre></div></div>
+
+<p>We can see that both numerical (age) and categorical (passenger class) features are used in the tree.</p>
+
+<p>Structurely, a decision tree is a flowchart-like structure:</p>
+
+<ul>
+  <li>Each internal node represents a decision based on a feature (e.g., “First class?”)</li>
+  <li>Each branch represents the outcome of the decision (e.g., “Yes” or “No”)</li>
+  <li>Each leaf node represents a final prediction (e.g., “Survived” or “Dead”)</li>
+</ul>
+
+<p>The <strong>learning</strong> happens at each node where the machine choses which feature and partition of the feature to use.</p>
+
+<p>Pros of DT:</p>
+<ul>
+  <li>Easy to understand as it mimics human decision making.</li>
+  <li>Requires little data processing</li>
+  <li>Handles both numerical and categorical features</li>
+</ul>
+
+<p>Cons:</p>
+<ul>
+  <li>Prone to overfitting</li>
+  <li>Unstable</li>
+</ul>
+
+<h2 id="popular-ensemble-of-decision-trees">Popular Ensemble of decision trees</h2>
+<p>As we mentioned above, a single decision tree is prone to overfitting. To remedy this, we can use an ensemble of decision trees. Below are two popular approaches:</p>
+
+<h3 id="random-forests">Random Forests</h3>
+
+<p>A <em>random forest</em> is a collection of decision trees, wehre each tree is trained on a random subset of the data and its features. The final prediction is made by aggregating the predictions of all the trees (for classification: majority vote; for regression: average).</p>
+
+<p>Key points:</p>
+<ul>
+  <li>The <em>randomness</em> lies in the data sampling and feature selection.</li>
+  <li>Training are parallel: trees are trained independently. Resulting in faster training</li>
+  <li>Good baseline, robust to noise.</li>
+</ul>
+
+<h3 id="gradient-boosting">Gradient Boosting</h3>
+
+<p>Gradient boostings starts with a weak model, usually a small DT, measure its errors, then train a new model to predict the error and adding the new model to the ensemble. This sequential process is then repeated manytimes wehre each model learn from the mistakes of the previous ones.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Step 1: Start with an initial prediction (e.g., average)
+    ┌──────────────┐
+    │   Model 0    │
+    │  (baseline)  │
+    └──────────────┘
+           │
+           ▼
+     Residuals/Error
+
+Step 2: Fit a new tree to residuals
+    ┌──────────────┐
+    │   Model 1    │
+    │  (residuals) │
+    └──────────────┘
+           │
+           ▼
+     Updated Predictions
+
+Step 3: Fit another tree to new residuals
+    ┌──────────────┐
+    │   Model 2    │
+    │  (new error) │
+    └──────────────┘
+           │
+           ▼
+     More Accurate Predictions
+
+Repeat this process for N trees:
+    Final Prediction = 
+    Model₀ + η·Model₁ + η·Model₂ + ... + η·Modelₙ
+
+Where η = learning rate (a small number, like 0.1)
+</code></pre></div></div>
+
+<p>Key points:</p>
+<ul>
+  <li>Newer model boosts the gradeint of the loss function, essential numerical optimization.</li>
+  <li>The sequential nature of the process. Resulting in slower training.</li>
+  <li>Produces competitive results. Commonly the go-to models on Kaggle (XGBoost, LightGBM, CatBoost)</li>
+</ul>
+
+
+    </div>
+    
+    
+    <footer class="post-footer mt-xl">
+      <div class="share-buttons">
+        <h3>Share this post</h3>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://twitter.com/intent/tweet?text=Decision%20Trees:%20From%20Basics%20to%20Ensemble%20Methods&url=http://localhost:4000/posts/2025/08/decision-trees/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-secondary">
+            <i class="fab fa-twitter"></i> Tweet
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/posts/2025/08/decision-trees/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-secondary">
+            <i class="fab fa-linkedin"></i> Share
+          </a>
+        </div>
+      </div>
+    </footer>
+    
+    
+    
+    <aside class="related-posts mt-xl">
+      <h3>Related Posts</h3>
+      <div class="card-grid">
+        
+        
+        
+        
+        
+          
+            
+            
+            
+            
+              <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-09-23T00:00:00-04:00">
+          September 23, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 12 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/09/RL/">Policy Optimization in Reinforcement Learning: PPO and GRPO</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">Exploring policy optimization algorithms in reinforcement learning, including PPO and GRPO, with insights from recent advances in LLM development.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">reinforcement-learning</span>
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">LLMs</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/09/RL/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+              
+              
+            
+          
+        
+          
+        
+          
+            
+            
+            
+            
+              <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-08-01T00:00:00-04:00">
+          August 01, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 8 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/08/Backtracking/">Backtracking Algorithms: A Comprehensive Guide</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">algorithms</span>
+        
+        <span class="tag">coding</span>
+        
+        <span class="tag">computer-science</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/08/Backtracking/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+              
+              
+            
+          
+        
+          
+            
+            
+            
+            
+          
+        
+      </div>
+    </aside>
+    
+  </div>
+</article>
+
+
+
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Qin Xuqiang 秦绪强</h3>
+        <p>AI researcher and mathematician</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/projects/">Projects</a></li>
+          
+          <li><a href="/publications/">Publications</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="footer-social">
+          
+          <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+            <i class="fas fa-robot"></i>
+          </a>
+          
+          <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          
+          <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          
+        </div>
+        <p class="rss-link">
+          <a href="/feed.xml">
+            <i class="fas fa-rss"></i> RSS Feed
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qin Xuqiang 秦绪强. Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  
+  <script src="/assets/main.js"></script>
+</body>
+</html>

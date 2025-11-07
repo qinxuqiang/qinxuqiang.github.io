@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Blog | Qin Xuqiang 秦绪强</title>
+  
+  <meta name="description" content="Personal website of Qin Xuqiang - AI researcher and mathematician exploring machine learning, NLP, and mathematical foundations of artificial intelligence">
+  <meta name="author" content="Qin Xuqiang">
+  <meta name="keywords" content="artificial intelligence, machine learning, mathematics, research">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/blog/">
+  <meta property="og:title" content="Blog">
+  <meta property="og:description" content="Personal website of Qin Xuqiang - AI researcher and mathematician exploring machine learning, NLP, and mathematical foundations of artificial intelligence">
+  <meta property="og:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="http://localhost:4000/blog/">
+  <meta name="twitter:title" content="Blog">
+  <meta name="twitter:description" content="Personal website of Qin Xuqiang - AI researcher and mathematician exploring machine learning, NLP, and mathematical foundations of artificial intelligence">
+  <meta name="twitter:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://localhost:4000/blog/">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Qin Xuqiang 秦绪强" href="http://localhost:4000/feed.xml">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/style.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  
+</head>
+
+
+
+
+<body>
+  <header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="site-title">
+        <a href="/">Qin Xuqiang 秦绪强</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          
+          <li>
+            <a href="/" >
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/about/" >
+              About
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/" class="active">
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects/" >
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/publications/" >
+              Publications
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      
+      <div class="social-links">
+        
+        <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        
+        <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+          <i class="fas fa-robot"></i>
+        </a>
+        
+        <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        
+        <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+  
+  <main>
+    <div class="container-narrow">
+  <article class="page">
+    <header class="page-header">
+      <h1 class="page-title">Blog</h1>
+      
+      <p class="text-muted">Thoughts on AI, mathematics, and technology</p>
+      
+    </header>
+    
+    <div class="page-content">
+      <div class="search-box">
+  <input type="text" id="search-input" class="search-input" placeholder="Search posts..." aria-label="Search blog posts" />
+</div>
+
+<div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+  <p class="text-muted">Exploring ideas at the intersection of artificial intelligence, machine learning, and mathematical theory</p>
+</div>
+
+<div class="card-grid" id="posts-container">
+  
+    <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-09-23T00:00:00-04:00">
+          September 23, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 12 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/09/RL/">Policy Optimization in Reinforcement Learning: PPO and GRPO</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">Exploring policy optimization algorithms in reinforcement learning, including PPO and GRPO, with insights from recent advances in LLM development.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">reinforcement-learning</span>
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">LLMs</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/09/RL/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-08-05T00:00:00-04:00">
+          August 05, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 10 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/08/decision-trees/">Decision Trees: From Basics to Ensemble Methods</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">decision-trees</span>
+        
+        <span class="tag">algorithms</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/08/decision-trees/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-08-01T00:00:00-04:00">
+          August 01, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 8 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/08/Backtracking/">Backtracking Algorithms: A Comprehensive Guide</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">algorithms</span>
+        
+        <span class="tag">coding</span>
+        
+        <span class="tag">computer-science</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/08/Backtracking/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-07-30T00:00:00-04:00">
+          July 30, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 1 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/07/welcome/">Welcome to My Blog</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">Introducing my new personal website and blog where I'll share insights on AI, machine learning, and mathematics.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">meta</span>
+        
+        <span class="tag">announcement</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/07/welcome/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+  
+</div>
+
+<div id="no-results" style="display: none; text-align: center; padding: 3rem;">
+  <p class="text-muted">No posts found matching your search.</p>
+</div>
+
+<hr />
+
+<h2 id="topics-i-write-about">Topics I Write About</h2>
+
+<div class="card-grid" style="margin-top: 2rem;">
+  <div class="card">
+    <div class="project-icon">🤖</div>
+    <h3>Machine Learning</h3>
+    <p class="text-muted">Deep learning techniques, neural networks, and the latest advances in AI</p>
+  </div>
+  
+  <div class="card">
+    <div class="project-icon">💬</div>
+    <h3>NLP &amp; Language Models</h3>
+    <p class="text-muted">Natural language processing, transformers, and language understanding</p>
+  </div>
+  
+  <div class="card">
+    <div class="project-icon">📐</div>
+    <h3>Mathematics</h3>
+    <p class="text-muted">Mathematical foundations, theory, and their applications to AI</p>
+  </div>
+  
+  <div class="card">
+    <div class="project-icon">🔬</div>
+    <h3>Research Insights</h3>
+    <p class="text-muted">Thoughts on recent papers, research trends, and methodologies</p>
+  </div>
+</div>
+
+<hr />
+
+<div style="text-align: center; margin-top: 3rem;">
+  <p>Subscribe to my <a href="/feed.xml"><i class="fas fa-rss"></i> RSS feed</a> to stay updated with new posts.</p>
+</div>
+
+<script>
+// Simple client-side search
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const postsContainer = document.getElementById('posts-container');
+  const noResults = document.getElementById('no-results');
+  
+  if (searchInput && postsContainer) {
+    const posts = Array.from(postsContainer.children);
+    
+    searchInput.addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      let visibleCount = 0;
+      
+      posts.forEach(post => {
+        const text = post.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          post.style.display = '';
+          visibleCount++;
+        } else {
+          post.style.display = 'none';
+        }
+      });
+      
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    });
+  }
+});
+</script>
+
+
+    </div>
+  </article>
+</div>
+
+
+
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Qin Xuqiang 秦绪强</h3>
+        <p>AI researcher and mathematician</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/projects/">Projects</a></li>
+          
+          <li><a href="/publications/">Publications</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="footer-social">
+          
+          <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+            <i class="fas fa-robot"></i>
+          </a>
+          
+          <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          
+          <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          
+        </div>
+        <p class="rss-link">
+          <a href="/feed.xml">
+            <i class="fas fa-rss"></i> RSS Feed
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qin Xuqiang 秦绪强. Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  
+  <script src="/assets/main.js"></script>
+</body>
+</html>

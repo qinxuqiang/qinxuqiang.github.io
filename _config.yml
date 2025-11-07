@@ -1,5 +1,114 @@
-title: "Qin Xuqiang"
-description: "Personal website of Qin Xuqiang"
+# Site Settings
+title: "Qin Xuqiang 秦绪强"
+name: "Qin Xuqiang"
+email: "russellqin@gmail.com"
+description: "Personal website of Qin Xuqiang - AI researcher and mathematician exploring machine learning, NLP, and mathematical foundations of artificial intelligence"
 baseurl: ""
-url: "qinxuqiang.github.io"
-theme: minima
+url: "https://qinxuqiang.github.io"
+repository: "qinxuqiang/qinxuqiang.github.io"
+
+# Author Information
+author:
+  name: "Qin Xuqiang"
+  email: "russellqin@gmail.com"
+  bio: "Mathematician specializing in algebraic geometry"
+  avatar: "/images/profile.jpeg"
+  location: ""
+  affiliation: "Previously at University of North Carolina at Chapel Hill and Indiana University"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/qinxuqiang"
+    - label: "Hugging Face"
+      icon: "fas fa-robot"
+      url: "https://huggingface.co/qinxuqiang1990"
+    - label: "Google Scholar"
+      icon: "fas fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en"
+    - label: "Email"
+      icon: "fas fa-envelope"
+      url: "mailto:russellqin@gmail.com"
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: /
+  - title: "About"
+    url: /about/
+  - title: "Blog"
+    url: /blog/
+  - title: "Projects"
+    url: /projects/
+  - title: "Publications"
+    url: /publications/
+
+# Collections
+collections:
+  publications:
+    output: true
+    permalink: /publication/:name/
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:year/:month/:title/
+timezone: America/New_York
+
+# Kramdown Settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    block:
+      line_numbers: false
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Defaults
+defaults:
+  # Posts
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Qin Xuqiang"
+      show_date: true
+  # Publications
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication"
+  # Pages
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Social Sharing
+twitter:
+  username: ""
+
+# Analytics (add your tracking ID when ready)
+google_analytics: ""
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - README.md
+  - LICENSE
+  - "*.plan.md"

@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<article class="publication">
+  <div class="container-narrow">
+    <header class="publication-header">
+      <h1 class="publication-title">{{ page.title }}</h1>
+      
+      {% if page.authors %}
+      <p class="publication-authors">{{ page.authors }}</p>
+      {% endif %}
+      
+      {% if page.venue %}
+      <p class="publication-venue">
+        <i class="fas fa-book"></i> {{ page.venue }}{% if page.year %}, {{ page.year }}{% endif %}
+      </p>
+      {% endif %}
+      
+      <div class="publication-links">
+        {% if page.pdf %}
+        <a href="{{ page.pdf }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-file-pdf"></i> PDF
+        </a>
+        {% endif %}
+        
+        {% if page.arxiv %}
+        <a href="{{ page.arxiv }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-archive"></i> arXiv
+        </a>
+        {% endif %}
+        
+        {% if page.doi %}
+        <a href="{{ page.doi }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> DOI
+        </a>
+        {% endif %}
+        
+        {% if page.code %}
+        <a href="{{ page.code }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-code"></i> Code
+        </a>
+        {% endif %}
+      </div>
+    </header>
+    
+    <div class="publication-content post-content">
+      {{ content }}
+    </div>
+  </div>
+</article>
+
+
+

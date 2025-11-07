@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Policy Optimization in Reinforcement Learning: PPO and GRPO | Qin Xuqiang 秦绪强</title>
+  
+  <meta name="description" content="Exploring policy optimization algorithms in reinforcement learning, including PPO and GRPO, with insights from recent advances in LLM development.">
+  <meta name="author" content="Qin Xuqiang">
+  <meta name="keywords" content="reinforcement-learning, machine-learning, LLMs, deep-learning">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:4000/posts/2025/09/RL/">
+  <meta property="og:title" content="Policy Optimization in Reinforcement Learning: PPO and GRPO">
+  <meta property="og:description" content="Exploring policy optimization algorithms in reinforcement learning, including PPO and GRPO, with insights from recent advances in LLM development.">
+  <meta property="og:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2025/09/RL/">
+  <meta name="twitter:title" content="Policy Optimization in Reinforcement Learning: PPO and GRPO">
+  <meta name="twitter:description" content="Exploring policy optimization algorithms in reinforcement learning, including PPO and GRPO, with insights from recent advances in LLM development.">
+  <meta name="twitter:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://localhost:4000/posts/2025/09/RL/">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Qin Xuqiang 秦绪强" href="http://localhost:4000/feed.xml">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/style.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  
+</head>
+
+
+
+
+<body>
+  <header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="site-title">
+        <a href="/">Qin Xuqiang 秦绪强</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          
+          <li>
+            <a href="/" >
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/about/" >
+              About
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/" >
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects/" >
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/publications/" >
+              Publications
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      
+      <div class="social-links">
+        
+        <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        
+        <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+          <i class="fas fa-robot"></i>
+        </a>
+        
+        <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        
+        <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+  
+  <main>
+    <article class="post">
+  <div class="container-narrow">
+    <header class="post-header">
+      <h1 class="post-title">Policy Optimization in Reinforcement Learning: PPO and GRPO</h1>
+      
+      <div class="post-meta">
+        <time datetime="2025-09-23T00:00:00-04:00">
+          September 23, 2025
+        </time>
+        
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 12 min read
+        </span>
+        
+        
+        
+        <span>by Qin Xuqiang</span>
+        
+      </div>
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">reinforcement-learning</span>
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">LLMs</span>
+        
+        <span class="tag">deep-learning</span>
+        
+      </div>
+      
+    </header>
+    
+    <div class="post-content">
+      <h1 id="policy-optimazation-ppo-and-grpo">Policy Optimazation: PPO and GRPO</h1>
+
+<p>The recent pulication of DeepSeek R1 paper on Nature showed reinforcememnt learning (RL) has become one of the center piece in LLM developmen.
+In this post we discuss some of the more prominent algorithms in RL</p>
+
+<h2 id="proximal-policy-optimizaiton-ppo">Proximal Policy Optimizaiton (PPO)</h2>
+
+<p>One of the most well-studied RL algorithm.</p>
+
+<h2 id="group-relative-policy-optimization-grpo">Group Relative Policy Optimization (GRPO)</h2>
+
+<p>First introduced in DeepSeek Math paper. Instead of training a critic network, it samples multiple outputs (the group) and compute 
+the group relative advantage for each output and perform gradient update, essentially mimicking a ‘sampel and eliminate’ process.</p>
+
+    </div>
+    
+    
+    <footer class="post-footer mt-xl">
+      <div class="share-buttons">
+        <h3>Share this post</h3>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://twitter.com/intent/tweet?text=Policy%20Optimization%20in%20Reinforcement%20Learning:%20PPO%20and%20GRPO&url=http://localhost:4000/posts/2025/09/RL/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-secondary">
+            <i class="fab fa-twitter"></i> Tweet
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/posts/2025/09/RL/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-secondary">
+            <i class="fab fa-linkedin"></i> Share
+          </a>
+        </div>
+      </div>
+    </footer>
+    
+    
+    
+    <aside class="related-posts mt-xl">
+      <h3>Related Posts</h3>
+      <div class="card-grid">
+        
+        
+        
+        
+        
+          
+        
+          
+            
+            
+            
+            
+              <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-08-05T00:00:00-04:00">
+          August 05, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 10 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/08/decision-trees/">Decision Trees: From Basics to Ensemble Methods</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">decision-trees</span>
+        
+        <span class="tag">algorithms</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/08/decision-trees/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+              
+              
+            
+          
+        
+          
+            
+            
+            
+            
+          
+        
+          
+            
+            
+            
+            
+          
+        
+      </div>
+    </aside>
+    
+  </div>
+</article>
+
+
+
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Qin Xuqiang 秦绪强</h3>
+        <p>AI researcher and mathematician</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/projects/">Projects</a></li>
+          
+          <li><a href="/publications/">Publications</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="footer-social">
+          
+          <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+            <i class="fas fa-robot"></i>
+          </a>
+          
+          <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          
+          <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          
+        </div>
+        <p class="rss-link">
+          <a href="/feed.xml">
+            <i class="fas fa-rss"></i> RSS Feed
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qin Xuqiang 秦绪强. Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  
+  <script src="/assets/main.js"></script>
+</body>
+</html>

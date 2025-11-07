@@ -1,7 +1,10 @@
 ---
-layout: default
-title: "[ML Basic] Decision Trees"
+layout: post
+title: "Decision Trees: From Basics to Ensemble Methods"
 date: 2025-08-05
+tags: [machine-learning, decision-trees, algorithms, tutorial]
+excerpt: "A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting."
+read_time: 10
 ---
 
 # Decision Trees (DT) :evergreen_tree:

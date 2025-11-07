@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Backtracking Algorithms: A Comprehensive Guide | Qin Xuqiang 秦绪强</title>
+  
+  <meta name="description" content="Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems.">
+  <meta name="author" content="Qin Xuqiang">
+  <meta name="keywords" content="algorithms, coding, computer-science">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:4000/posts/2025/08/Backtracking/">
+  <meta property="og:title" content="Backtracking Algorithms: A Comprehensive Guide">
+  <meta property="og:description" content="Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems.">
+  <meta property="og:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2025/08/Backtracking/">
+  <meta name="twitter:title" content="Backtracking Algorithms: A Comprehensive Guide">
+  <meta name="twitter:description" content="Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems.">
+  <meta name="twitter:image" content="http://localhost:4000/images/profile.jpeg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://localhost:4000/posts/2025/08/Backtracking/">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Qin Xuqiang 秦绪强" href="http://localhost:4000/feed.xml">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/style.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  
+</head>
+
+
+
+
+<body>
+  <header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="site-title">
+        <a href="/">Qin Xuqiang 秦绪强</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          
+          <li>
+            <a href="/" >
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/about/" >
+              About
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/" >
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects/" >
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/publications/" >
+              Publications
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      
+      <div class="social-links">
+        
+        <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        
+        <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+          <i class="fas fa-robot"></i>
+        </a>
+        
+        <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        
+        <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+  
+  <main>
+    <article class="post">
+  <div class="container-narrow">
+    <header class="post-header">
+      <h1 class="post-title">Backtracking Algorithms: A Comprehensive Guide</h1>
+      
+      <div class="post-meta">
+        <time datetime="2025-08-01T00:00:00-04:00">
+          August 01, 2025
+        </time>
+        
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 8 min read
+        </span>
+        
+        
+        
+        <span>by Qin Xuqiang</span>
+        
+      </div>
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">algorithms</span>
+        
+        <span class="tag">coding</span>
+        
+        <span class="tag">computer-science</span>
+        
+      </div>
+      
+    </header>
+    
+    <div class="post-content">
+      <h1 id="backtracking">Backtracking</h1>
+
+<h2 id="intro">Intro</h2>
+
+<p>Backtracking is a powerful programming technique. The main point is to systematically explore the solution spaces by making choices, and undo them in case they do not lead to valid solutions.</p>
+
+<h2 id="coding-template">Coding Template:</h2>
+
+<p>Here is a code template for a typical backtrack problem:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">backtrack</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">remaining_choices</span><span class="p">):</span>
+    <span class="c1"># Base case: found a complete solution
+</span>    <span class="k">if</span> <span class="nf">is_complete</span><span class="p">(</span><span class="n">current_state</span><span class="p">):</span>
+        <span class="nf">process_solution</span><span class="p">(</span><span class="n">current_state</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Try each possible choice
+</span>    <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="nf">get_valid_choices</span><span class="p">(</span><span class="n">remaining_choices</span><span class="p">):</span>
+        <span class="c1"># Make the choice
+</span>        <span class="nf">make_choice</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">choice</span><span class="p">)</span>
+        
+        <span class="c1"># Recurse
+</span>        <span class="nf">backtrack</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">updated_remaining_choices</span><span class="p">)</span>
+        
+        <span class="c1"># Undo the choice (backtrack)
+</span>        <span class="nf">undo_choice</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="n">choice</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="n">__main__</span>
+    <span class="nf">setup_solution_collection</span><span class="p">()</span>
+    <span class="nf">backtrack</span><span class="p">(</span><span class="n">initial_state_</span><span class="p">,</span><span class="n">all_choices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">solution</span>
+</code></pre></div></div>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="the-n-queens-problem">The N-Queens problem</h3>
+<p><a href="https://leetcode.com/submissions/detail/1719643129/">LeetCode</a></p>
+
+    </div>
+    
+    
+    <footer class="post-footer mt-xl">
+      <div class="share-buttons">
+        <h3>Share this post</h3>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://twitter.com/intent/tweet?text=Backtracking%20Algorithms:%20A%20Comprehensive%20Guide&url=http://localhost:4000/posts/2025/08/Backtracking/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-secondary">
+            <i class="fab fa-twitter"></i> Tweet
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/posts/2025/08/Backtracking/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn btn-secondary">
+            <i class="fab fa-linkedin"></i> Share
+          </a>
+        </div>
+      </div>
+    </footer>
+    
+    
+    
+    <aside class="related-posts mt-xl">
+      <h3>Related Posts</h3>
+      <div class="card-grid">
+        
+        
+        
+        
+        
+          
+            
+            
+            
+            
+          
+        
+          
+            
+            
+            
+            
+              <article class="post-card">
+  <div class="post-card-content">
+    
+    
+    <div class="post-card-body">
+      <div class="post-meta">
+        <time datetime="2025-08-05T00:00:00-04:00">
+          August 05, 2025
+        </time>
+        
+        <span class="read-time">
+          <i class="far fa-clock"></i> 10 min read
+        </span>
+        
+      </div>
+      
+      <h2 class="post-title">
+        <a href="/posts/2025/08/decision-trees/">Decision Trees: From Basics to Ensemble Methods</a>
+      </h2>
+      
+      
+      <p class="post-excerpt">A comprehensive introduction to decision trees, covering fundamentals and popular ensemble methods like Random Forests and Gradient Boosting.</p>
+      
+      
+      
+      <div class="post-tags">
+        
+        <span class="tag">machine-learning</span>
+        
+        <span class="tag">decision-trees</span>
+        
+        <span class="tag">algorithms</span>
+        
+      </div>
+      
+      
+      <a href="/posts/2025/08/decision-trees/" class="read-more">
+        Read more <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+
+              
+              
+            
+          
+        
+          
+        
+          
+            
+            
+            
+            
+          
+        
+      </div>
+    </aside>
+    
+  </div>
+</article>
+
+
+
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Qin Xuqiang 秦绪强</h3>
+        <p>AI researcher and mathematician</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/projects/">Projects</a></li>
+          
+          <li><a href="/publications/">Publications</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="footer-social">
+          
+          <a href="https://github.com/qinxuqiang" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          <a href="https://huggingface.co/qinxuqiang1990" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
+            <i class="fas fa-robot"></i>
+          </a>
+          
+          <a href="https://scholar.google.com/citations?user=zUjz89EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          
+          <a href="mailto:russellqin@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          
+        </div>
+        <p class="rss-link">
+          <a href="/feed.xml">
+            <i class="fas fa-rss"></i> RSS Feed
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qin Xuqiang 秦绪强. Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  
+  <script src="/assets/main.js"></script>
+</body>
+</html>

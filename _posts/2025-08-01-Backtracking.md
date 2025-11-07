@@ -1,7 +1,10 @@
 ---
-layout: default
-title: "[Coding] Backtracking"
+layout: post
+title: "Backtracking Algorithms: A Comprehensive Guide"
 date: 2025-08-01
+tags: [algorithms, coding, computer-science]
+excerpt: "Learn the fundamentals of backtracking algorithms with practical examples and a reusable code template for solving complex search problems."
+read_time: 8
 ---
 
 # Backtracking

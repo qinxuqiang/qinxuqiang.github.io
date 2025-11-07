@@ -1,0 +1,52 @@
+<article class="publication-card">
+  <div class="publication-content">
+    <h3 class="publication-title">
+      {% if include.pub.url %}
+      <a href="{{ include.pub.url | relative_url }}">{{ include.pub.title }}</a>
+      {% else %}
+      {{ include.pub.title }}
+      {% endif %}
+    </h3>
+    
+    {% if include.pub.authors %}
+    <p class="publication-authors">{{ include.pub.authors }}</p>
+    {% endif %}
+    
+    {% if include.pub.venue %}
+    <p class="publication-venue">
+      <i class="fas fa-book"></i> {{ include.pub.venue }}{% if include.pub.year %}, {{ include.pub.year }}{% endif %}
+    </p>
+    {% endif %}
+    
+    <div class="publication-links">
+
+      
+      {% if include.pub.arxiv %}
+      <a href="{{ include.pub.arxiv }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-archive"></i> arXiv
+      </a>
+      {% endif %}
+      
+      {% if include.pub.doi %}
+      <a href="{{ include.pub.doi }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-external-link-alt"></i> DOI
+      </a>
+      {% endif %}
+      
+      {% if include.pub.code %}
+      <a href="{{ include.pub.code }}" class="pub-link" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-code"></i> Code
+      </a>
+      {% endif %}
+      
+      {% if include.pub.url %}
+      <a href="{{ include.pub.url | relative_url }}" class="pub-link">
+        <i class="fas fa-info-circle"></i> Details
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</article>
+
+
+

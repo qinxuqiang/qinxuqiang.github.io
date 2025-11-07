@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
-  <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
-</head>
+{% include head.html %}
 <body>
-  <header>
-    <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
-    <nav>
-      <a href="{{ "/" | relative_url }}">Home</a> |
-      <a href="{{ "/about.html" | relative_url }}">About</a> |
-      <a href="{{ "/blog.html" | relative_url }}">Blog</a>
-    </nav>
-  </header>
+  {% include header.html %}
+  
   <main>
     {{ content }}
   </main>
-  <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
-  </footer>
+  
+  {% include footer.html %}
+  
+  <script src="{{ '/assets/main.js' | relative_url }}"></script>
 </body>
 </html>
