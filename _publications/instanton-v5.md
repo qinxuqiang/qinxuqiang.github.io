@@ -10,7 +10,7 @@ layout: publication
 
 ## Abstract
 
-<ABSTRACT NOT FOUND>
+We study semistable sheaves of rank 2 with Chern classes c 1= 0, c 2= 2 and c 3= 0 on the Fano 3-fold V 5 of Picard number 1, degree 5 and index 2. We show that the moduli space of such sheaves has a component that is isomorphic to P 5 by identifying it with the moduli space of semistable quiver representations. This provides a natural smooth compactification of the moduli space of minimal instantons, as well as Ulrich bundles of rank 2 on V 5.
 
 ## Publication Details
 
